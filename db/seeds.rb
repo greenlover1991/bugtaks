@@ -16,3 +16,7 @@ BugCategory.create(:name=>'Security', :description=>'Bugs concerning the safety,
 BugCategory.create(:name=>'Dependency', :description=>'Bugs caused by other bugs, fixed or not.')
 BugCategory.create(:name=>'Others', :description=>'Other bugs not on this list.')
 
+Role.create(:name=>'Developer', :description=>'Programmer')
+User.create(:user_name=>'greenlover1991', :password=>'SCtheapuh', :screen_name=>'Steven Go', :email=>'greenlover1991@yahoo.com', :role_id=>1)
+
+
