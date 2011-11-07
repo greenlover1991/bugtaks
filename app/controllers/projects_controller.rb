@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
 
-  before_filter :require_user_privilege, :except => [:index,:join, :unjoin]
+  before_filter :require_user_privilege, :except => [:index,:join, :unjoin, :new, :create]
   # GET /projects
   # GET /projects.json
   def index
