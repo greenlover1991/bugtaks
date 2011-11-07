@@ -2,6 +2,8 @@ Bugtaks::Application.routes.draw do
 
 
 
+
+    
   resources :bug_categories
 
   resources :projects do
@@ -38,7 +40,7 @@ Bugtaks::Application.routes.draw do
   resources :users
 
   resources :tasks
-
+  resources :user_notifications
   match '/:action', :controller => 'application'
 
   # The priority is based upon order of creation:
@@ -96,5 +98,5 @@ Bugtaks::Application.routes.draw do
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id(.:format)))'
+  #match ':controller(/:action(/:id(.:format)))'
 end

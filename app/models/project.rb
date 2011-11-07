@@ -21,8 +21,6 @@ class Project < ActiveRecord::Base
   end
   
   
-  
-  
   private 
     def start_date_cannot_be_greater_than_end_date
       if !end_date.nil? and start_date > end_date

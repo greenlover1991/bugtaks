@@ -24,7 +24,7 @@
 		 	<td> <%= t.description %> </td>
 		 	<td> <%= t.status %> </td>
 		 	<td> <%= t.is_manual %> </td>
-			<td class='delete_task_ledger'> 
+			<td class='delete_item'> 
 				<% if t.user_id == session[:user_id] && t.status != "Active" %>
 			<%= link_to 'Edit', edit_project_task_task_ledger_path(@project.id, t.task.id, t.id), :confirm=>"Override?" %> 
 			<%= link_to 'Destroy', project_task_task_ledger_path(@project.id, t.task.id, t.id), :method=>:delete, :remote=>true, :confirm=>"Are you sure?" %> 

@@ -15,6 +15,7 @@ class BugPost < ActiveRecord::Base
 
   before_save :set_closed_datetime
   before_update :add_no_of_fixes_and_tests
+  after_save :send_notification
   
   attr_accessor :previous_status
 
@@ -27,13 +28,7 @@ class BugPost < ActiveRecord::Base
   end
   
   
-  def self.posts_posted_by_user_id(user_id)
-    return BugPosts.where(:posted_by_id=>user_id)
-  end
-  
-  def self.posts_posted_for_user_id(user_id)
-    return BugPosts.where(:posted_for_id=>user_id)
-  end
+
   
   
   private
@@ -53,7 +48,16 @@ class BugPost < ActiveRecord::Base
 			end
 		end
 
-		
+		def send_notification
+		  bug_path = "/projects/#{self.bug_list.project_id}/bug_lists/#{self.bug_list_id}/bug_posts/#{self.id}"
+		  notification = UserNotification.new
+		  notification.title = "New Bug Post"
+		  notification.body = "a new bug post for you"
+		  notification.notification_url = bug_path
+		  notification.sent_to = self.posted_for
+		  notification.sent_by = self.posted_by
+		  notification.save
+		end
 
   
 end

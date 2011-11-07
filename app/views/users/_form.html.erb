@@ -15,8 +15,14 @@
     <%= f.label :user_name %><br />
     <%= f.text_field :user_name %>
   </div>
+  <% unless @user.new_record? %>
+		<div class="field">
+		  <%= f.label :old_password %><br />
+		  <%= f.password_field :old_password %>
+		</div>
+  <% end %>
   <div class="field">
-    <%= f.label :password %><br />
+    <%= f.label :password, 'New Password' %><br />
     <%= f.password_field :password %>
   </div>
   <div class="field">
@@ -35,10 +41,7 @@
     <%= f.label :email %><br />
     <%= f.text_field :email %>
   </div>
-  <div class="field">
-    <%= f.label :bug_posts_count %><br />
-    <%= f.number_field :bug_posts_count %>
-  </div>
+
   <div class="field">
     <%= f.check_box :is_notify %> 
     <%= f.label :is_notify,"Email me with new bugs for me" %>

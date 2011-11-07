@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111104133207) do
+ActiveRecord::Schema.define(:version => 20111107060546) do
 
   create_table "bug_categories", :force => true do |t|
     t.string   "name"
@@ -135,6 +135,16 @@ ActiveRecord::Schema.define(:version => 20111104133207) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "task_id"
+  end
+
+  create_table "user_notifications", :force => true do |t|
+    t.string   "title",            :null => false
+    t.text     "body",             :null => false
+    t.string   "notification_url"
+    t.integer  "sent_to_id",       :null => false
+    t.integer  "sent_by_id",       :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|

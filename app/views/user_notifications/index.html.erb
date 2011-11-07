@@ -1,0 +1,26 @@
+		<p>
+			<b> Inbox: </b>
+			<table border=1>
+				<tr>
+		 	<th> Title </th>
+		 	<th> Message </th>
+		 	<th> From </th>
+		 	<th> Date </th>
+		 	<th> Delete </th>
+				</tr>
+			<% @notifications.each do |n| %>
+				<tr>
+		  <td> <%= n.title %> </td>
+ 		  <td> <%= n.body %> 
+ 		  <%= link_to 'Notification Link', n.notification_url if n.notification_url %> 
+ 		  </td>
+		 	<td> <%= n.sent_by.screen_name %> </td>
+		 	<td> <%= n.created_at.ctime %> </td>
+			<td class='delete_item'> 
+			<%= link_to 'Destroy', n, :method=>:delete, :remote=>true, :confirm=>"Are you sure?" %> 
+			</td>
+				</tr>
+			<% end %>
+			</table>
+		</p>
+

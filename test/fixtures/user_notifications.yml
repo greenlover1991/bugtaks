@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  body: MyText
+  notification_url: MyString
+  sent_to_id: 1
+  sent_for_id: 1
+
+two:
+  title: MyString
+  body: MyText
+  notification_url: MyString
+  sent_to_id: 1
+  sent_for_id: 1

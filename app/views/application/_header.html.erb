@@ -1,13 +1,16 @@
-
 <% if session[:user_screen_name] %>
 <%= "Welcome #{session[:user_screen_name]}!"%>
 
 <%= link_to 'Projects', projects_path %> |
-<%= link_to 'Tasks', tasks_path %> | 
+<%= link_to 'Manage Tasks', tasks_path %> | 
+<%= link_to 'Profile', user_path(session[:user_id]) %> |
+<%= link_to 'Inbox', user_notifications_path %> |
+
 <%= link_to 'Logout', '/logout' %>
 
 <div id="current_task">
   <%= render 'current_task' %>
 </div>
-<hr>
+<hr/>
 <% end %>
+

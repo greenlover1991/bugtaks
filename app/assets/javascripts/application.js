@@ -82,7 +82,7 @@ function checkTime(i)
 function bindFunctions()
 {
   // to fadeout when deleting a task ledger
-  $('.delete_task_ledger').bind('ajax:complete', function(){
+  $('.delete_item').bind('ajax:complete', function(){
   $(this).closest('tr').fadeOut();
   });
 }
