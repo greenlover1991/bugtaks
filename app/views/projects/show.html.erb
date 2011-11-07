@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+<input type="hidden" name="real_project_id" id="real_project_id" value="<%= @project.id%>" />
+
+<table border=1>
+  <tr>
+    <td><b>Project:</b></td>
+    <td> <%= @project.name %> </td>
+    <td rowspan=2><b>Description:</b></td>
+    <td rowspan=2><%= @project.description %> </td>
+  </tr>
+  <tr>
+    <td> <b>Start Date:</b> </td>
+    <td> <%= @project.start_date %> </td>
+  </tr>
+  
+  <tr>
+    <td><b>End Date:</b></td>
+    <td> <%= @project.end_date %> </td>
+		<td><b>Status:</b></td>
+    <td> <%= @project.status %> </td>
+  </tr>
+</table>
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Destroy', @project, confirm: 'Are you sure?', method: :delete %> |
+<%= link_to 'Back', projects_path %> |
+<%= link_to 'Show Bugs', present_bug_lists_project_path(@project), :remote=>true %> |
+<%= link_to 'Show Task Ledger', present_task_ledgers_project_path(@project), :remote=>true %>
+<p>
+  <b> Developers: </b>
+  <%= render :partial=>'users', :locals=>{:users=>@project.users}%>
+</p>
+
+<div id="content">
+		<%= render :partial=>'bug_lists' %>
+</div>
+
+
+

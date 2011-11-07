@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @bug_list.title %>
+</p>
+
+<p>
+  <b>Project:</b>
+  <%= @bug_list.project.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @bug_list.description %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @bug_list.status %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @bug_list.user.screen_name %>
+</p>
+
+<p>
+  <b>Bug posts count:</b>
+  <%= @bug_list.bug_posts_count %>
+</p>
+
+<%= render :partial=>'bug_posts',:locals=>{:bug_list=>@bug_list} %>
+ 
+<%= link_to 'Edit', edit_project_bug_list_path(@bug_list.project_id,@bug_list) %> |
+<%= link_to 'Back', project_bug_lists_path %>

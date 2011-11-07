@@ -1,0 +1,1 @@
+$('#join_unjoin_<%= @project.id %>').html("<%= escape_javascript render(:partial=>'join_unjoin', :locals=>{:project=>@project}) %>");

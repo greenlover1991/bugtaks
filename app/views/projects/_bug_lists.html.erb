@@ -1,0 +1,15 @@
+<p>
+  <b> Bug Lists: </b>
+  <% unless @project.bug_lists.empty? %>
+	  <table>
+  	  <% @project.bug_lists.find_each do |bug_list| %>
+  	    <tr>
+  	      <td> <%= bug_list.title%> </td> 
+  	      <td> <%= "(#{bug_list.no_of_closed_bugs} out of #{bug_list.no_of_bugs})" %> </td>
+  	      <td><%= link_to 'New Bug Post', new_project_bug_list_bug_post_path(bug_list.project_id, bug_list.id) %></td>
+    	    <%= render :partial=>'bug_posts', :locals=>{:bug_list=>bug_list} %>
+  	    </tr>
+  	  <% end %>
+  	</table>
+  <% end %>
+</p>

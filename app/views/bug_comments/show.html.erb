@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Bug post:</b>
+  <%= @bug_comment.bug_post %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%= @bug_comment.body %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @bug_comment.user %>
+</p>
+
+<p>
+  <b>Img url:</b>
+  <%= @bug_comment.img_url %>
+</p>
+
+
+<%= link_to 'Edit', edit_bug_comment_path(@bug_comment) %> |
+<%= link_to 'Back', bug_comments_path %>

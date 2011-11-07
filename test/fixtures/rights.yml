@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  description: MyText
+  is_read: false
+  is_delete: false
+  is_update: false
+  is_create: false
+  is_executable: false
+
+two:
+  name: MyString
+  description: MyText
+  is_read: false
+  is_delete: false
+  is_update: false
+  is_create: false
+  is_executable: false

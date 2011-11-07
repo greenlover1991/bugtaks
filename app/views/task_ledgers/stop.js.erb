@@ -1,0 +1,10 @@
+// update current_task div
+$('#current_task').html("<%= escape_javascript render 'application/current_task' %>");
+
+// update tasks div 
+$('#tasks').html("<%= escape_javascript render :partial=>'projects/tasks' %>");
+
+// update task_ledgers div
+$('#task_ledgers').html("<%= escape_javascript render 'projects/task_ledgers' %>");
+
+bindFunctions();

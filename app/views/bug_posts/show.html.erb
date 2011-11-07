@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+
+
+<table border=1>
+  <tr>
+    <td> <b> Title:</b> </td>
+		<td> <%= @bug_post.title %> </td>
+    <td rowspan=3> <b> Body:</b> </td>
+		<td rowspan=3> <%= @bug_post.img_url %> <%= @bug_post.body %> </td>   
+  </tr>
+  <tr>
+    <td> <b> Project:</b> </td>
+		<td> <%= @bug_post.bug_list.project.name %> </td>
+  </tr>
+  <tr>
+    <td> <b> Bug List:</b> </td>
+		<td> <%= @bug_post.bug_list.title %> </td>
+  </tr>
+  <tr>
+		<td> <b> Priority:</b> </td>
+		<td> <%= @bug_post.priority %> </td>
+		<td> <b> Posted By:</b> </td>
+		<td> <%= @bug_post.posted_by.screen_name %> </td>
+  </tr>
+  <tr>
+		<td> <b> Category:</b> </td>
+		<td> <%= @bug_post.bug_category.name if @bug_post.bug_category %> </td>
+		<td> <b> Tester:</b> </td>
+		<td> <%= @bug_post.posted_for.screen_name %> </td>
+  </tr>
+  <tr>
+		<td> <b> No. of Fixes:</b> </td>
+		<td> <%= @bug_post.no_of_fixes %> </td>
+		<td> <b> Status:</b> </td>
+		<td> 
+			<%= form_for @bug_post, :url=>"/projects/#{params[:project_id]}/bug_lists/#{params[:bug_list_id]}/bug_posts/#{params[:id]}" do |f| %> 
+			  <%= f.select :status, BugPost.statuses %>
+ 			  <%= f.hidden_field :previous_status, :value=>@bug_post.status %>
+			  <%= f.submit 'Save' %>
+			<% end %>
+		</td>
+  </tr>
+  <tr>
+		<td> <b> No. of Tests:</b> </td>
+		<td> <%= @bug_post.no_of_tests %> </td>
+		<td> <b> Closed Datetime:</b> </td>
+		<td> <%= @bug_post.closed_datetime ? @bug_post.closed_datetime : "Not Yet Closed"%> </td>
+  </tr>
+</table>
+
+<%= link_to 'Edit', edit_project_bug_list_bug_post_path(@bug_post.bug_list.project_id, @bug_post.bug_list_id, @bug_post) %> |
+<%= link_to 'Destroy', [@bug_post.bug_list.project, @bug_post.bug_list, @bug_post], :method=> :delete, :confirm=>'Are you sure?' %> | 
+<%= link_to 'Back', @bug_post.bug_list.project %> 
+<%= render 'bug_comments' %>
+<p> <b> Post a comment: </b> </p>
+<%= render 'bug_comment_form' %>
+

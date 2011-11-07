@@ -1,0 +1,29 @@
+<h1>Listing bug_comments</h1>
+
+<table>
+  <tr>
+    <th>Bug post</th>
+    <th>Body</th>
+    <th>User</th>
+    <th>Img url</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @bug_comments.each do |bug_comment| %>
+  <tr>
+    <td><%= bug_comment.bug_post.title %></td>
+    <td><%= bug_comment.body %></td>
+    <td><%= bug_comment.user.screen_name %></td>
+    <td><%= bug_comment.img_url %></td>
+    <td><%= link_to 'Show', bug_comment %></td>
+    <td><%= link_to 'Edit', edit_project_bug_list_bug_post_bug_comment_path(bug_comment.bug_post.bug_list.project_id, bug_comment.bug_post.bug_list_id, bug_comment.bug_post_id, bug_comment.id) %></td>
+    <td><%= link_to 'Destroy', project_bug_list_bug_post_bug_comment_path(bug_comment.bug_post.bug_list.project_id, bug_comment.bug_post.bug_list_id, bug_comment.bug_post_id, bug_comment.id), confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Bug comment', new_bug_comment_path %>

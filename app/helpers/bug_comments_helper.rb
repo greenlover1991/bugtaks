@@ -1,0 +1,2 @@
+module BugCommentsHelper
+end

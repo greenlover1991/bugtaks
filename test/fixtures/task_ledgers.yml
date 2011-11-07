@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  project: 
+  task: 
+  start_datetime: 2011-10-31 11:25:59
+  end_datetime: 2011-10-31 11:25:59
+  use: 
+  duration: 1.5
+  description: MyText
+  status: MyString
+  is_manual: false
+
+two:
+  project: 
+  task: 
+  start_datetime: 2011-10-31 11:25:59
+  end_datetime: 2011-10-31 11:25:59
+  use: 
+  duration: 1.5
+  description: MyText
+  status: MyString
+  is_manual: false

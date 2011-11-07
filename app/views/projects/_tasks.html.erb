@@ -1,0 +1,28 @@
+<div id="tasks">
+	<p>
+		<% if !@project.nil? && session[:task_ledger_id].nil? %>	
+			<b> Tasks: </b>
+			<% @project.tasks.each do |t| %>
+				<% Task.subtasks(t) do |s| %>
+					  <% case s %>
+				      <% when Task %>
+				        <li>
+				          <%= s.name %>
+				          <span class="start_task">
+				          <%= link_to 'Start', start_project_task_task_ledger_path(@project.id, s.id), :remote=>true %>
+				          <%= link_to 'Override', new_project_task_task_ledger_path(@project.id,s.id) %>
+				          </span>
+				        </li>          
+				      <% when 1 %>
+				      <ul>
+				<% when -1%> 
+				      </ul>
+				  	<% end %>
+				
+				<% end %>
+			<% end %>
+		<% else %>
+			<b> There is still a current active task. Multitasking is inefficient.</b>
+		<% end %>
+	</p>
+</div>

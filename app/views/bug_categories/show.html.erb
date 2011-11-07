@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @bug_category.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @bug_category.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_bug_category_path(@bug_category) %> |
+<%= link_to 'Back', bug_categories_path %>

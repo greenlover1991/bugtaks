@@ -1,0 +1,17 @@
+<p>
+  <table class="bug_posts">
+    <% bug_list.unclosed_bug_posts.find_each do |bp| %>
+		  <tr>  
+		    <td> 
+		    	<%= link_to bp.title, project_bug_list_bug_post_path(bug_list.project_id, bug_list.id, bp.id)%> 
+		    </td>
+		    <td>
+		      <%= bp.status %>
+		    </td>
+		    
+		  </tr>
+		<% end %>
+  </table>
+  
+
+</p>

@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @right.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @right.description %>
+</p>
+
+<p>
+  <b>Is read:</b>
+  <%= @right.is_read %>
+</p>
+
+<p>
+  <b>Is delete:</b>
+  <%= @right.is_delete %>
+</p>
+
+<p>
+  <b>Is update:</b>
+  <%= @right.is_update %>
+</p>
+
+<p>
+  <b>Is create:</b>
+  <%= @right.is_create %>
+</p>
+
+<p>
+  <b>Is executable:</b>
+  <%= @right.is_executable %>
+</p>
+
+
+<%= link_to 'Edit', edit_right_path(@right) %> |
+<%= link_to 'Back', rights_path %>

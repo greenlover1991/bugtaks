@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  body: MyText
+  status: MyString
+  img_url: MyString
+  bug_list: 
+  posted_by_id: 1
+  posted_for_id: 1
+  priority: MyString
+  category: MyString
+  no_of_fixes: 1
+  no_of_tests: 1
+  closed_datetime: 2011-11-02 16:54:14
+
+two:
+  title: MyString
+  body: MyText
+  status: MyString
+  img_url: MyString
+  bug_list: 
+  posted_by_id: 1
+  posted_for_id: 1
+  priority: MyString
+  category: MyString
+  no_of_fixes: 1
+  no_of_tests: 1
+  closed_datetime: 2011-11-02 16:54:14

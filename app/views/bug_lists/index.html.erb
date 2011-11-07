@@ -1,0 +1,31 @@
+<h1>Listing bug_lists</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Status</th>
+    <th>User</th>
+    <th>Bug posts</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @bug_lists.each do |bug_list| %>
+  <tr>
+    <td><%= bug_list.title %></td>
+    <td><%= bug_list.description %></td>
+    <td><%= bug_list.status %></td>
+    <td><%= bug_list.user.screen_name %></td>
+    <td><%= bug_list.bug_posts_count %></td>
+    <td><%= link_to 'Show', project_bug_list_path(bug_list.project_id,bug_list) %></td>
+    <td><%= link_to 'Edit', edit_project_bug_list_path(bug_list.project_id,bug_list) %></td>
+    <td><%= link_to 'Destroy', project_bug_list_path(bug_list.project_id, bug_list), confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Bug List', new_project_bug_list_path %>

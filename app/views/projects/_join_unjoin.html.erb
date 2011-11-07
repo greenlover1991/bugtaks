@@ -1,0 +1,9 @@
+   <% if project.can_be_joined_by_user_id? session[:user_id] %>
+		 <%= form_tag join_project_path(project.id), :method=>:post, :remote=>true do %>
+			 <%= submit_tag "Join Project" %>
+		 <% end %>	 
+   <% else %>
+		 <%= form_tag unjoin_project_path(project.id), :method=>:post, :remote=>true do %>
+			 <%= submit_tag "Unjoin Project" %>
+		 <% end %>	 
+   <% end %>

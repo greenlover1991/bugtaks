@@ -1,0 +1,35 @@
+<h1>Listing rights</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Is read</th>
+    <th>Is delete</th>
+    <th>Is update</th>
+    <th>Is create</th>
+    <th>Is executable</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @rights.each do |right| %>
+  <tr>
+    <td><%= right.name %></td>
+    <td><%= right.description %></td>
+    <td><%= right.is_read %></td>
+    <td><%= right.is_delete %></td>
+    <td><%= right.is_update %></td>
+    <td><%= right.is_create %></td>
+    <td><%= right.is_executable %></td>
+    <td><%= link_to 'Show', right %></td>
+    <td><%= link_to 'Edit', edit_right_path(right) %></td>
+    <td><%= link_to 'Destroy', right, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Right', new_right_path %>

@@ -1,0 +1,40 @@
+<%= form_for(@task_ledger, :url=>"/projects/#{params[:project_id]}/tasks/#{params[:task_id]}/task_ledgers/#{params[:id]}") do |f| %>
+
+  <% if @task_ledger.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@task_ledger.errors.count, "error") %> prohibited this task ledger from being saved:</h2>
+
+      <ul>
+      <% @task_ledger.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <%= f.label :project_id, "Project: " + @task_ledger.project.name %>
+    <%= f.hidden_field :project_id, :value=>params[:project_id] %>
+  </div>
+  <div class="field">
+    <%= f.label :task_id, "Task: " + @task_ledger.task.name %>
+    <%= f.hidden_field :task_id, :value=>params[:task_id] %>
+  </div>
+
+  <div class="field">
+    <%= f.label :start_datetime %><br />
+    <%= f.datetime_select :start_datetime, :default=>DateTime.now %>
+  </div>
+  <div class="field">
+    <%= f.label :end_datetime %><br />
+    <%= f.datetime_select :end_datetime, :default=>DateTime.now %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

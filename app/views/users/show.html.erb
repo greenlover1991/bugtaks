@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User name:</b>
+  <%= @user.user_name %>
+</p>
+
+<p>
+  <b>Role:</b>
+  <%= @user.role.name %>
+</p>
+
+<p>
+  <b>Screen name:</b>
+  <%= @user.screen_name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+<p>
+  <b>Bug posts count:</b>
+  <%= @user.bug_posts_count %>
+</p>
+
+<p>
+  <b>Is notify:</b>
+  <%= @user.is_notify %>
+</p>
+
+<p>
+  <%= render :partial=>'projects', :locals=>{:projects=>@user.projects} %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

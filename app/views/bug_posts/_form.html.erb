@@ -1,0 +1,52 @@
+<%= form_for(@bug_post, :url=> "/projects/#{params[:project_id]}/bug_lists/#{params[:bug_list_id]}/bug_posts/#{params[:id]}" ) do |f| %>
+  <% if @bug_post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bug_post.errors.count, "error") %> prohibited this bug_post from being saved:</h2>
+
+      <ul>
+      <% @bug_post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label 'Bug List:' %>
+    <%= BugList.find(params[:bug_list_id]).title%>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :body %><br />
+    <%= f.text_area :body %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br />
+    <%= f.select :status, BugPost.statuses %>
+    <%= f.hidden_field :previous_status, :value=>@bug_post.status unless @bug_post.new_record? %>
+  </div>
+  <div class="field">
+    <%= f.label :img_url %><br />
+    <%= f.text_field :img_url %>
+  </div>
+    <%= f.hidden_field :bug_list_id, :value=>params[:bug_list_id] %>
+    <%= f.hidden_field :posted_by_id, :value=>session[:user_id] %>
+  <div class="field">
+    <%= f.label :posted_for_id, 'Tester:' %><br />
+    <%= f.collection_select :posted_for_id, Project.find(params[:project_id]).users, :id, :screen_name, :prompt=>'Select tester' %>
+  </div>
+  <div class="field">
+    <%= f.label :priority %><br />
+    <%= f.select :priority, BugPost.priorities %>
+  </div>
+  <div class="field">
+    <%= f.label :bug_category_id, 'Category' %><br />
+    <%= f.collection_select :bug_category_id, BugCategory.all, :id, :name, :prompt=>'Select a category' %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

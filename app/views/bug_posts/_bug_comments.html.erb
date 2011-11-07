@@ -1,0 +1,17 @@
+<p>
+  <b> Comments: </b>
+  <% unless @bug_post.bug_comments.empty? %>
+		<table border=1>
+			<% @bug_post.bug_comments.find_each do |comment| %>
+				<tr>
+				  <td> <%= comment.user.screen_name %> </td>
+				  <td> <%= comment.img_url%> <%= comment.body %> </td>
+				  <td> <%= comment.updated_at.ctime %></td>
+	 		    <td> <%= link_to 'Edit', edit_project_bug_list_bug_post_bug_comment_path(params[:project_id], params[:bug_list_id], params[:id], comment.id) %></td>
+				  <td> <%= link_to 'Delete', [@bug_post.bug_list.project, @bug_post.bug_list, @bug_post, comment], :method=>:delete, :confirm=>"Are you sure?" %></td>
+				</tr>
+	 		<% end %>
+				    
+	</table>
+  <% end %>
+</p>

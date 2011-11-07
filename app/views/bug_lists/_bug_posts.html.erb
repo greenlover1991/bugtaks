@@ -1,0 +1,19 @@
+<p>
+  <b>Bug Posts:</b> <br />
+
+  <table>
+    <% bug_list.bug_posts.find_each do |bp| %>
+		  <tr>  
+		    <td> 
+		    	<%= link_to bp.title, project_bug_list_bug_post_path(bug_list.project_id, bug_list.id, bp.id)%> 
+		    </td>
+		    <td>
+		      <%= link_to 'Destroy', [bug_list.project, bug_list, bp], :method=> :delete, :confirm=>'Are you sure?' %>
+		    </td>
+		    
+		  </tr>
+		<% end %>
+  </table>
+  
+  <%= link_to 'New Bug Post', new_project_bug_list_bug_post_path(bug_list.project_id, bug_list.id) %>
+</p>

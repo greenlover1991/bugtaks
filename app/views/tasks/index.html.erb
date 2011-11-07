@@ -1,0 +1,12 @@
+<h1>Listing tasks</h1>
+
+
+
+<% @tasks.each do |t| %>
+  <%= render :partial=>'subtasks', :locals=>{:task=>t} %>
+<% end %>
+
+
+<br />
+
+<%= link_to 'New Task', new_task_path %>

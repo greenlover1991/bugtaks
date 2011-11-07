@@ -1,0 +1,13 @@
+  <% Task.subtasks(task) do |s| %>
+		<% case s %>
+        <% when Task %>
+          <li>
+		<%= link_to s.name, s %> | <%= link_to 'Edit', edit_task_path(s) %> | <%= link_to 'Destroy', s, confirm: 'Are you sure?', method: :delete %>
+		      </li>          
+        <% when 1 %>
+          <ul>
+	  <% when -1%> 
+          </ul>
+      <% end %>
+  <% end %>
+  

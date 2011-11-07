@@ -1,0 +1,11 @@
+$('#current_task').html("<%= escape_javascript render 'application/current_task' %>");
+
+//$('#tasks').html("<%= escape_javascript render 'projects/tasks' %>");
+
+$('#task_ledgers').html("<%= escape_javascript render 'projects/task_ledgers' %>");
+$('.start_task').fadeOut();
+elapsed=0;
+startTimer();
+bindFunctions();
+
+document.getElementById('original_project_id').value = document.getElementById('real_project_id').value;

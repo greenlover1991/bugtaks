@@ -1,0 +1,14 @@
+ <% if !session[:task_ledger_id].nil? %>
+	 <% task_ledger = TaskLedger.find(session[:task_ledger_id]) %>
+	 <% elapsed_time = DateTime.now.to_i - task_ledger.start_datetime.to_i %>
+	 Current Active <%= "Project: #{task_ledger.project.name} Task: #{task_ledger.task.name}"%> </br>
+	 Elapsed Time: <span id='task_ledger_timer'> <%= elapsed_time %> </span>
+	 
+	 <%= form_tag stop_project_task_task_ledger_path(task_ledger.project_id, task_ledger.task_id, task_ledger), :method=>:put, :remote=>true do %>
+		 Notes: <%= text_area_tag :description %>	 
+		 <input type="hidden" name="original_project_id" id="original_project_id" value="<%=params[:id]%>" />
+	   <%= submit_tag "Stop" %>
+   <% end %>	 
+ <% else %>
+ No current task ongoing.
+ <% end %>

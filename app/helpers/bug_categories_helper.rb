@@ -1,0 +1,2 @@
+module BugCategoriesHelper
+end
