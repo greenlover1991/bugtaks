@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   
   def index
     redirect_to '/login' unless session[:user_id]
+    
+    @projects_joined = Project.joins(:users).where("projects_users.user_id=#{session[:user_id]}")
   end
   
   def login

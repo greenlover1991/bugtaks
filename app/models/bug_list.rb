@@ -15,18 +15,16 @@ class BugList < ActiveRecord::Base
   end
   
   def no_of_unclosed_bugs
-    return BugPost.where(:bug_list_id=>self.id).where("status <> 'Closed'").count
+    return self.bug_posts.where("status <> 'Closed'").count
   end
   
   def no_of_closed_bugs
-    return BugPost.where(:bug_list_id=>self.id, :status=>"Closed").count
+    return self.bug_posts.where(:status=>"Closed").count
   end
   
   def no_of_bugs
-    return BugPost.count
+    return self.bug_posts.count
   end
   
-  def unclosed_bug_posts
-    return BugPost.where(:bug_list_id=>self.id).where("status <> 'Closed'")
-  end
+
 end

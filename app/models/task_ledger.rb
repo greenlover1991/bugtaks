@@ -20,6 +20,13 @@ class TaskLedger < ActiveRecord::Base
       tl.id if !tl.nil?
     end
   end
+  
+  def self.find_with_sort_key(project_id,sort_key)
+  	sort_key = sort_key.nil? ?  "start_datetime" : sort_key
+  	TaskLedger.find_by_sql("SELECT tl.* FROM task_ledgers tl INNER JOIN tasks t ON tl.task_id = t.id INNER JOIN users u ON tl.user_id = u.id WHERE tl.project_id = #{project_id} ORDER BY #{sort_key}")
+  end
+  
+ 
  
   private
     def calculate_duration

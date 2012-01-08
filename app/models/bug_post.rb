@@ -51,8 +51,8 @@ class BugPost < ActiveRecord::Base
 		def send_notification
 		  bug_path = "/projects/#{self.bug_list.project_id}/bug_lists/#{self.bug_list_id}/bug_posts/#{self.id}"
 		  notification = UserNotification.new
-		  notification.title = "New Bug Post"
-		  notification.body = "a new bug post for you"
+		  notification.title = "#{self.title}[#{self.status}]"
+		  notification.body = "%.30s..." % self.body
 		  notification.notification_url = bug_path
 		  notification.sent_to = self.posted_for
 		  notification.sent_by = self.posted_by

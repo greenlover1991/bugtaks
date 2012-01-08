@@ -20,6 +20,23 @@ class Project < ActiveRecord::Base
     return !(self.users.include? User.find(user_id))
   end
   
+  def total_manhours
+  	return "%.2f" % self.task_ledgers.sum(:duration)
+  end
+  
+  def longest_task_name
+    tl = longest_task
+  	tl.keys[tl.values.index tl.values.max]
+  end
+  
+  def longest_task_value
+	  tl = longest_task
+		"%.2f" %  tl.values.max
+  end
+  
+  def latest_task_ledger
+  	self.task_ledgers.order("start_datetime desc").limit(1)  
+  end
   
   private 
     def start_date_cannot_be_greater_than_end_date
@@ -27,5 +44,9 @@ class Project < ActiveRecord::Base
         errors.add(:start_date, "can't be later than end date")
       end
     end
+    
+    def longest_task
+  		self.task_ledgers.joins(:task).group("task_ledgers.task_id, tasks.name").sum(:duration)
+  	end
   
 end

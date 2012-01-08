@@ -2,7 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+
 .bug_posts
 {
   padding-left: 20px;
 }
+
+.overriden
+{
+  background-color: #EEE;
+}
+
+pre {
+  font-size: 13px;
+  background-color: white;   
+}
+

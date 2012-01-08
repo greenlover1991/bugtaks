@@ -6,7 +6,7 @@
     <td> <b> Title:</b> </td>
 		<td> <%= @bug_post.title %> </td>
     <td rowspan=3> <b> Body:</b> </td>
-		<td rowspan=3> <%= @bug_post.img_url %> <%= @bug_post.body %> </td>   
+		<td rowspan=3> <%= @bug_post.img_url %> <%= simple_format(@bug_post.body, {},:sanitize=>true) %> </td>   
   </tr>
   <tr>
     <td> <b> Project:</b> </td>

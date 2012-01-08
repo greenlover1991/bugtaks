@@ -4,30 +4,28 @@
 			<b> Task Ledger: </b>
 			<table border=1>
 				<tr>
-		 	<th> Task </th>
-		 	<th> Start </th>
+		 	<th> <%= sorted_task_ledgers 'Task', @project, 'name' %> </th>
+		 	<th> <%= sorted_task_ledgers 'Start', @project, 'start_datetime' %> </th>
 		 	<th> End </th>
-		 	<th> User </th>
-		 	<th> Duration(hrs) </th>
+		 	<th> <%= sorted_task_ledgers 'User', @project, 'screen_name' %> </th>
+		 	<th> <%= sorted_task_ledgers 'Duration(hrs)', @project, 'duration' %> </th>
 		 	<th> Notes </th>
-		 	<th> Status </th>
-		 	<th> Overidden </th>
 			<th> Options </th>
 				</tr>
-			<% @project.task_ledgers.each do |t| %>
+			<% task_ledgers = TaskLedger.find_with_sort_key(@project.id, params[:sort])%>
+			<% for t in task_ledgers %>
 				<tr>
-		 	<td> <%= t.task.name %> </td>
+		 	<td <%= "class=overriden" if t.is_manual %>> <%= t.task.name %> </td>
 		 	<td> <%= t.start_datetime.ctime %> </td>
 		 	<td> <%= t.end_datetime.ctime if !t.end_datetime.nil? %> </td>
 		 	<td> <%= t.user.screen_name %> </td>
 		 	<td> <%= "%.2f" % t.duration if !t.duration.nil? %> </td>
-		 	<td> <%= t.description %> </td>
-		 	<td> <%= t.status %> </td>
-		 	<td> <%= t.is_manual %> </td>
+		 	<td> <%= simple_format(t.description.squeeze(" "),{}, :sanitize=>true) unless t.description.nil? %> </td>
 			<td class='delete_item'> 
 				<% if t.user_id == session[:user_id] && t.status != "Active" %>
 			<%= link_to 'Edit', edit_project_task_task_ledger_path(@project.id, t.task.id, t.id), :confirm=>"Override?" %> 
 			<%= link_to 'Destroy', project_task_task_ledger_path(@project.id, t.task.id, t.id), :method=>:delete, :remote=>true, :confirm=>"Are you sure?" %> 
+			
 				<% end %>
 			</td>
 				</tr>

@@ -6,11 +6,15 @@
     <td><b>Project:</b></td>
     <td> <%= @project.name %> </td>
     <td rowspan=2><b>Description:</b></td>
-    <td rowspan=2><%= @project.description %> </td>
+    <td rowspan=2><%= simple_format(@project.description, {},:sanitize=>true) %> </td>
+    <td><b>Total ManHours: </b> </td>
+    <td> <%= @project.total_manhours %></td>
   </tr>
   <tr>
     <td> <b>Start Date:</b> </td>
     <td> <%= @project.start_date %> </td>
+    <td><b>Longest Task: </b> </td>
+    <td> <%= @project.longest_task_name %></td>
   </tr>
   
   <tr>
@@ -18,6 +22,8 @@
     <td> <%= @project.end_date %> </td>
 		<td><b>Status:</b></td>
     <td> <%= @project.status %> </td>
+    <td><b>Longest Task(hrs): </b> </td>
+    <td> <%= @project.longest_task_value %></td>
   </tr>
 </table>
 <%= link_to 'Edit', edit_project_path(@project) %> |
@@ -31,7 +37,8 @@
 </p>
 
 <div id="content">
-		<%= render :partial=>'bug_lists' %>
+		<%= render :partial=>'tasks' %>
+		<%= render :partial=>'task_ledgers' %>
 </div>
 
 

@@ -1,0 +1,29 @@
+<% if @projects_joined.empty? %>
+	<p>
+	  Seems you haven't joined any projects. 
+	  Click <a href="<%= projects_url %>">here</a> to join one. :D
+	</p>
+<% else %>
+
+	<p>
+		<b>Projects joined: </b>
+		<table border="1">
+			<tr>
+				<th>Name</th>
+				<th>Recent Task</th>
+				<th>Started</th>
+				<th>Ended</th>
+			</tr>
+			<% @projects_joined.each do |p| %>
+			<% latest = p.latest_task_ledger[0] %>
+				<tr>
+					<td><%= link_to p.name, project_url(p) %></td>
+					<td><%= latest.task.name %> </td>
+					<td><%= latest.start_datetime.ctime %> </td>
+					<td><%= latest.end_datetime.ctime unless latest.end_datetime.nil? %> </td>
+				</tr>
+			<% end %>
+		</table>
+	</p>
+
+<% end %>

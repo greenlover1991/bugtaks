@@ -44,7 +44,7 @@ class BugListsController < ApplicationController
 		@bug_list.user_id = session[:user_id]
     respond_to do |format|
       if @bug_list.save
-        format.html { redirect_to [@bug_list.project,@bug_list], notice: 'Bug list was successfully created.' }
+        format.html { redirect_to @bug_list.project, notice: 'Bug list was successfully created.' }
         format.json { render json: @bug_list, status: :created, location: @bug_list }
       else
         format.html { render action: "new" }
@@ -60,7 +60,7 @@ class BugListsController < ApplicationController
 		@bug_list.user_id = session[:user_id]
     respond_to do |format|
       if @bug_list.update_attributes(params[:bug_list])
-        format.html { redirect_to [@bug_list.project,@bug_list], notice: 'Bug list was successfully updated.' }
+        format.html { redirect_to @bug_list.project, notice: 'Bug list was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
